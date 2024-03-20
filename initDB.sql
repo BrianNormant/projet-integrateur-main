@@ -48,9 +48,18 @@ Create table EQ06_Route(
     FOREIGN KEY(destination_station) REFERENCES EQ06_Station(id) on delete cascade
 );
 
+/**
+ * Les Elements d'un itineraire:
+ * EX: Pour la route (id = 4, origin: "Montreal", dest: "Winnipeg");
+ * RailRoute id 41: route_id: 4, rail: Montreal -> Torronto, nb_stop = 0
+ * RailRoute id 42: route_id: 4, rail: Torronto -> Sioux-Lookout, nb_stop = 1
+ * RailRoute id 43: route_id: 4, rail: Sioux-Lookout -> Winnipeg, nb_stop = 2
+ */
 Create table EQ06_RailRoute(
+    id int AUTO_INCREMENT primary key,
     rail_id int not null,
     route_id int not null,
+    nb_stop int not null,
     FOREIGN KEY(rail_id) REFERENCES EQ06_Rail(id) on delete cascade,
     FOREIGN KEY(route_id) REFERENCES EQ06_Route(id) on delete cascade
 );
