@@ -72,6 +72,7 @@ Create table EQ06_Train(
     puissance decimal(5,3) not null,
     company_id varchar(50) not null,
     route_id int not null,
+    relative_position int not null,
     currentRail int,
     lastStation int,
     nextStation int CHECK (lastStation != nextStation),
