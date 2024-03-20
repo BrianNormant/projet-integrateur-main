@@ -89,7 +89,8 @@ Create table EQ06_Train(
     FOREIGN KEY(route_id) REFERENCES EQ06_Route(id) on delete cascade,
     FOREIGN KEY(currentRail) REFERENCES EQ06_Rail(id) on delete cascade,
     FOREIGN KEY(lastStation) REFERENCES EQ06_Station(id) on delete cascade,
-    FOREIGN KEY(nextStation) REFERENCES EQ06_Station(id) on delete cascade
+    FOREIGN KEY(nextStation) REFERENCES EQ06_Station(id) on delete cascade,
+    CONSTRAINT valid_puissance CHECK (puissance > 0)
 )
 
 COMMIT;
