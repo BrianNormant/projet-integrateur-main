@@ -77,8 +77,8 @@ Create table EQ06_Reservation(
 
 Create table EQ06_Train(
     id int AUTO_INCREMENT primary key,
-    charge decimal(5,3) not null,
-    puissance decimal(5,3) not null,
+    charge decimal(4,1) not null,
+    puissance number not null,
     company_id varchar(50) not null,
     route_id int not null,
     relative_position int not null,
