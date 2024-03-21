@@ -67,12 +67,12 @@ Create table EQ06_RailRoute(
 Create table EQ06_Reservation(
     id int AUTO_INCREMENT primary key,
     company_id varchar(50) not null,
-    route_id int not null,
+    rail_id int not null,
     fare decimal(5) not null,
     dateReserv date not null,
     timeSlot varchar(10) not null CHECK (timeSlot IN ('morning', 'evening', 'night')),
     FOREIGN KEY(company_id) REFERENCES EQ06_Company(name) on delete cascade on update cascade,
-    FOREIGN KEY(route_id) REFERENCES EQ06_Route(id) on delete cascade  
+    FOREIGN KEY(rail_id) REFERENCES EQ06_Rail(id) on delete cascade on update cascade
 );
 
 Create table EQ06_Train(
