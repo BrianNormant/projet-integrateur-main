@@ -37,4 +37,15 @@ INSERT INTO EQ06_Account (userName, password, mail, company_id, CompanyType) VAL
 ('Dapnee',   '1234',  'repr@GovQuebec.qc',             'GovQuebec',       'company'),
 ('Francis',  '1234',  'repr@PHP.com',                  'PHP',             'company');
 
+INSERT INTO EQ06_Route (origin_station, destination_station) VALUES
+	((SELECT id FROM EQ06_Station WHERE nameStation = 'Toronto'),
+	 (SELECT id FROM EQ06_Station WHERE nameStation = 'Montreal'));
+
+INSERT INTO EQ06_RailRoute ( rail_id, route_id, nb_stop) VALUES
+	((SELECT id FROM EQ06_Rail WHERE conn1_station = 3 AND conn2_station = 4 OR conn1_station = 4 AND conn2_station = 3), 2, 0),
+	((SELECT id FROM EQ06_Rail WHERE conn1_station = 6 AND conn2_station = 4 OR conn1_station = 4 AND conn2_station = 6), 2, 1);
+
+INSERT INTO EQ06_Train (charge, puissance, company_id, route_id, relative_position, currentRail, lastStation, nextStation) VALUES
+	( 40, 4000, 'PHP', 2, 17, (SELECT id FROM EQ06_Rail WHERE conn1_station = 'Toronto' AND conn2_station = 'Brockville' OR conn1_station = 'Brockville' AND conn2_station = 'Toronto'), (SELECT id FROM EQ06_Station WHERE nameStation = 'Toronto'), (SELECT id FROM EQ06_Station WHERE nameStation = 'Brockville'));
+
 COMMIT;
