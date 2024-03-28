@@ -4,13 +4,13 @@
 START TRANSACTION;
 
 Create table EQ06_Company(
-    name Varchar(50) primary key not null,
+    name varchar(50) primary key not null,
     balance decimal(5,1)
 );
 
 Create table EQ06_Account( 
     userName varchar(50) not null primary key ,
-    passeword varchar(50) not null,
+    password varchar(50) not null,
     mail varchar(50) not null,
     Company_id varchar(50) not null,
     CompanyType varchar(15) not null CHECK (companyType IN ('admin', 'maintenance', 'company')),
